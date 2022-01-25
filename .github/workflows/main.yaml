@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: config
+        run: echo -e "MAKEFLAGS=\"-j\$((\$(nproc) + 1))\"" | sudo tee -a /etc/makepkg.conf
       - name: build package
         run: bash build.sh
       - name: upload artifacts
