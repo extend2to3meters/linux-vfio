@@ -23,6 +23,7 @@ source=(
   config         # the main kernel config file
   add-acs-overrides.patch
   i915-vga-arbiter.patch
+  rdtsc.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -33,7 +34,8 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
-            '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6')
+            '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6'
+            'c2aea40b3d804e949ae0415493fa3fed04523bb8c04c0c45a3a20b0f7dfaeba4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
