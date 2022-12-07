@@ -1,0 +1,25 @@
+name: Main
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: config
+        run: echo -e "MAKEFLAGS=\"-j\$((\$(nproc) + 1))\"" | sudo tee -a /etc/makepkg.conf
+      - name: build package
+        run: bash build.sh
+      - name: upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: ./*pkg.tar*
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: ./*pkg.tar*
+
+
